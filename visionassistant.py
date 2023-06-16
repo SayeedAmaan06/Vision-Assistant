@@ -250,7 +250,7 @@ def wishMe():
 
 def gpt3(texts):
 
-    openai.api_key = "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"
+    openai.api_key = "lorem ipsum"
 
     response = openai.Completion.create(
     model="text-davinci-002",
