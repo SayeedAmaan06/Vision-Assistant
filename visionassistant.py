@@ -7,7 +7,7 @@ import threading
 import pytesseract
 import pyttsx3
 import time
-import essentials.vgg16_places_365 as vgg16_places_365
+import vgg16_places_365 as vgg16_places_365
 from keras.models import load_model
 from time import sleep
 from tensorflow.keras.utils import img_to_array
@@ -27,18 +27,18 @@ from cv2 import resize
 import cv2
 from keras import backend as K
 from keras.layers import Input
-from keras.layers.core import Activation, Dense, Flatten
-from keras.layers.pooling import MaxPooling2D
+from keras.layers import Activation, Dense, Flatten
+from keras.layers import MaxPooling2D
 from keras.models import Model
 from keras.layers import Conv2D
 from keras.regularizers import l2
-from keras.layers.core import Dropout
+from keras.layers import Dropout
 from keras.layers import GlobalAveragePooling2D
 from keras.layers import GlobalMaxPooling2D
 from keras_applications.imagenet_utils import _obtain_input_shape
-from keras.utils.layer_utils import get_source_inputs
-from keras.utils.data_utils import get_file
-from keras.utils import layer_utils
+from keras.utils import get_source_inputs
+from keras.utils import get_file
+from tensorflow.python.keras.utils import layer_utils
 from keras.preprocessing import image
 from keras.applications.imagenet_utils import preprocess_input
 import openai
@@ -51,7 +51,7 @@ engine.setProperty('voice',voices[0].id)
 
 obj=["detect the objects","the objects", "the object", "detect object","detect objects","objects near me","objects near","objects"]
 txt1 = ["read the text","read for me","text","texts","read the texts","read the document","read the documents","read document"]
-env1= ["where am i","where i am","senario","detect the environment","detect the environments"]
+env1= ["where am i","where i am","scenario","detect the environment","detect the environments"]
 emtn = ["detect emotion","detect the emotion","detect the emotions","detect emotions"]
 
 @timeout(30)
@@ -117,7 +117,7 @@ def textdetection():
         text = pytesseract.image_to_string(cropped)
         speak(text)
 
-def senariodetection():
+def scenariodetection():
     WEIGHTS_PATH = 'https://github.com/GKalliatakis/Keras-VGG16-places365/releases/download/v1.0/vgg16-places365_weights_tf_dim_ordering_tf_kernels.h5'
     WEIGHTS_PATH_NO_TOP = 'https://github.com/GKalliatakis/Keras-VGG16-places365/releases/download/v1.0/vgg16-places365_weights_tf_dim_ordering_tf_kernels_notop.h5'
 
@@ -193,9 +193,9 @@ def takecommand():
 
 @timeout(20)
 def emotiondetect():
-    face_classifier = cv2.CascadeClassifier(r'C:/Users/amaan/minproj/essentials/haarcascade_frontalface_default.xml')
+    face_classifier = cv2.CascadeClassifier(r'haarcascade_frontalface_default.xml')
 
-    classifier =load_model(r'C:/Users/amaan/minproj/essentials/model.h5')
+    classifier =load_model(r'model.h5')
 
     emotion_labels = ['Angry','Disgust','Fear','Happy','Neutral', 'Sad', 'Surprise']
 
@@ -286,7 +286,7 @@ if __name__ == '__main__':
                     textdetection()
             for i in env1:
                 if i in query:
-                    senariodetection()
+                    scenariodetection()
             for i in emtn:
                 if i in query:
                     try:
