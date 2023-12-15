@@ -3,13 +3,11 @@ from __future__ import division, print_function
 import datetime
 from yolov5 import detect
 import speech_recognition as sr
-import threading
 import pytesseract
 import pyttsx3
 import time
-import essentials.vgg16_places_365 as vgg16_places_365
+import vgg16_places_365 as vgg16_places_365
 from keras.models import load_model
-from time import sleep
 from tensorflow.keras.utils import img_to_array
 
 # -*- coding: utf-8 -*-
@@ -20,27 +18,9 @@ from tensorflow.keras.utils import img_to_array
 '''
 import os
 import time
-import warnings
 import numpy as np
-from PIL import Image
 from cv2 import resize
 import cv2
-from keras import backend as K
-from keras.layers import Input
-from keras.layers.core import Activation, Dense, Flatten
-from keras.layers.pooling import MaxPooling2D
-from keras.models import Model
-from keras.layers import Conv2D
-from keras.regularizers import l2
-from keras.layers.core import Dropout
-from keras.layers import GlobalAveragePooling2D
-from keras.layers import GlobalMaxPooling2D
-from keras_applications.imagenet_utils import _obtain_input_shape
-from keras.utils.layer_utils import get_source_inputs
-from keras.utils.data_utils import get_file
-from keras.utils import layer_utils
-from keras.preprocessing import image
-from keras.applications.imagenet_utils import preprocess_input
 import openai
 from wrapt_timeout_decorator import *
 
